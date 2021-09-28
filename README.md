@@ -49,4 +49,8 @@ Quick Swap Pair
 1inch AggregationRouterV3
 
 0x11111112542D85B3EF69AE05771c2dCCff4fAa26
+
+Merkle Tree Tokens White List Root Hash 
+
+0x579bd7fc66268dda4db21d9f92fb57d2eb0ca62261f2e670f9b463bd34669e5e
 ```
