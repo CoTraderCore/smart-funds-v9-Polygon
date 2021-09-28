@@ -29,3 +29,24 @@ NOTE: in separate console
 Don't forget add new addresses to new permittedAddresses contract
 Don't forget set latest 1inch contract
 ```
+
+
+# Addresses
+
+```
+Quick Swap v2 Router
+
+0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff
+
+Quick Swap Factory
+
+0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32
+
+Quick Swap Pair
+
+0xadbF1854e5883eB8aa7BAf50705338739e558E5b
+
+1inch AggregationRouterV3
+
+0x11111112542D85B3EF69AE05771c2dCCff4fAa26
+```
