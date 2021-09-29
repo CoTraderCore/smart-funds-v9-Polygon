@@ -58,6 +58,15 @@ Quick Swap Pair
 
 0x11111112542D85B3EF69AE05771c2dCCff4fAa26
 
+Price Portal UNI
+
+https://polygonscan.com/tx/0x11b9ef8f268902fb9bccee82cc230487bdf69ee53a82493085286cca9d50452f
+
+
+Price Portal connectors (WMATIC, DAI)
+
+["0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270", "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"]
+
 Merkle Tree Tokens White List Root Hash
 
 0x579bd7fc66268dda4db21d9f92fb57d2eb0ca62261f2e670f9b463bd34669e5e
