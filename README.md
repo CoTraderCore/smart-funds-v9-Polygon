@@ -34,6 +34,14 @@ Don't forget set latest 1inch contract
 # Addresses
 
 ```
+DAI
+
+0x8f3cf7ad23cd3cadbd9735aff958023239c6a063
+
+WMATIC
+
+0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270
+
 Quick Swap v2 Router
 
 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff
@@ -50,7 +58,7 @@ Quick Swap Pair
 
 0x11111112542D85B3EF69AE05771c2dCCff4fAa26
 
-Merkle Tree Tokens White List Root Hash 
+Merkle Tree Tokens White List Root Hash
 
 0x579bd7fc66268dda4db21d9f92fb57d2eb0ca62261f2e670f9b463bd34669e5e
 ```
