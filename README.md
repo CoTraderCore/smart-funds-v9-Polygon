@@ -92,6 +92,13 @@ https://polygonscan.com/address/0x3ae392a4c6a99fcb991e208f9d74618fff513834#code
 0x3aE392A4c6a99FcB991E208f9D74618fff513834
 
 
+Smart Funds ERC20 Factory
+
+https://polygonscan.com/address/0x6f553184c04a4ad0b3551a4ff60fb73bb6e90408#code
+
+0x6F553184C04a4aD0b3551A4ff60FB73BB6E90408
+
+
 
 Price Portal connectors (WMATIC, DAI)
 
