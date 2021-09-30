@@ -39,7 +39,6 @@ contract SmartFundRegistry is Ownable {
   * @param _smartFundETHFactory          Address of smartFund ETH factory
   * @param _smartFundERC20Factory        Address of smartFund USD factory
   * @param _permittedAddresses           Address of permittedAddresses contract
-  * @param _platformFeeAddress           Address of platform fee
   */
   constructor(
     address _exchangePortalAddress,
