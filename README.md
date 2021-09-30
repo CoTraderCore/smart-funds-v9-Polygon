@@ -85,6 +85,13 @@ https://polygonscan.com/address/0xc8a2ba3e9ce03f78551d7de5706cc275d4d3130f#code
 0xC8A2Ba3E9CE03f78551d7dE5706Cc275d4D3130f
 
 
+Smart Funds ETH Factory
+
+https://polygonscan.com/address/0x3ae392a4c6a99fcb991e208f9d74618fff513834#code
+
+0x3aE392A4c6a99FcB991E208f9D74618fff513834
+
+
 
 Price Portal connectors (WMATIC, DAI)
 
