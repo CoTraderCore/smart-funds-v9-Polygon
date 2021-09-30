@@ -71,6 +71,13 @@ https://polygonscan.com/address/0x666CAe17452Cf2112eF1479943099320AFD16d47#code
 0x666CAe17452Cf2112eF1479943099320AFD16d47
 
 
+Exchange Portal Light
+
+https://polygonscan.com/address/0x2b4ba0a92ccc11e839d1928ae73b34e7aac2c040#code
+
+0x2b4ba0A92CcC11E839d1928ae73b34E7aaC2C040
+
+
 
 Price Portal connectors (WMATIC, DAI)
 
