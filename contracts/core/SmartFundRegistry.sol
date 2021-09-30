@@ -39,20 +39,19 @@ contract SmartFundRegistry is Ownable {
   * @param _smartFundETHFactory          Address of smartFund ETH factory
   * @param _smartFundERC20Factory        Address of smartFund USD factory
   * @param _permittedAddresses           Address of permittedAddresses contract
-  * @param _platformFeeAddress           Address of platform fee 
+  * @param _platformFeeAddress           Address of platform fee
   */
   constructor(
     address _exchangePortalAddress,
     address _smartFundETHFactory,
     address _smartFundERC20Factory,
-    address _permittedAddresses,
-    address _platformFeeAddress
+    address _permittedAddresses
   ) public {
     exchangePortalAddress = _exchangePortalAddress;
     smartFundETHFactory = SmartFundETHFactoryInterface(_smartFundETHFactory);
     smartFundERC20Factory = SmartFundERC20FactoryInterface(_smartFundERC20Factory);
     permittedAddresses = PermittedAddressesInterface(_permittedAddresses);
-    platformFeeAddress = _platformFeeAddress;
+    platformFeeAddress = address(this);
   }
 
   /**
