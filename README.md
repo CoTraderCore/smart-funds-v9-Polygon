@@ -98,9 +98,11 @@ https://polygonscan.com/address/0x6f553184c04a4ad0b3551a4ff60fb73bb6e90408#code
 
 0x6F553184C04a4aD0b3551A4ff60FB73BB6E90408
 
-Smart Funds Registry 
+Smart Funds Registry
 
 https://polygonscan.com/tx/0x81de724e77a9adaa933b1cc12a4ae16b2517c723ad5c25ee129703b95e917db6
+
+0x992F6c414A6DA6A7470dfB9D61eFc6639e9fbb0E
 
 
 
