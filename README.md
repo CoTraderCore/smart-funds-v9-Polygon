@@ -78,6 +78,13 @@ https://polygonscan.com/address/0x2b4ba0a92ccc11e839d1928ae73b34e7aac2c040#code
 0x2b4ba0A92CcC11E839d1928ae73b34E7aaC2C040
 
 
+Permitted Addresses
+
+https://polygonscan.com/address/0xc8a2ba3e9ce03f78551d7de5706cc275d4d3130f#code
+
+0xC8A2Ba3E9CE03f78551d7dE5706Cc275d4D3130f
+
+
 
 Price Portal connectors (WMATIC, DAI)
 
