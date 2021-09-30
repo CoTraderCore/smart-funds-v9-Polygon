@@ -60,6 +60,8 @@ Quick Swap Pair
 
 Price Portal UNI
 
+0x6d85Dd4672AFad01a28bdfA8b4323bE910999954
+
 https://polygonscan.com/tx/0x11b9ef8f268902fb9bccee82cc230487bdf69ee53a82493085286cca9d50452f
 
 
