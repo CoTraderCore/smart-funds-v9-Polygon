@@ -36,6 +36,11 @@ Don't forget set latest 1inch contract
 ```
 UNIBuyLowSellHigh
 
+0x10f02A8aEd8CBa0EF5D13030312dac1F41a39410
+
+
+UNIBuyLowSellHigh
+
 0xcCb6973225FE7e61B97E0fe1a7822EEc56884d92
 
 UNISWAP POS (Polygon)
