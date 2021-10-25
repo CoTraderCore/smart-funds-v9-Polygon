@@ -53,7 +53,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
 
     constructor(
         address _router,      // Uniswap v2 router
-        address _poolAddress, // Uniswap v2 pool (pair) SHOULD BE ETH BASED POOL
+        address _poolAddress, // Uniswap v2 pool (pair) SHOULD BE same as core fund asset (note: WETH for ETH)
         address _fund,        // SmartFund address
         address _UNI_TOKEN,   // Uniswap token
         address _LD_TOKEN     // WETH or any another backed pool token
