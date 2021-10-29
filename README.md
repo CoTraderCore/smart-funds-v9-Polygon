@@ -34,6 +34,11 @@ Don't forget set latest 1inch contract
 # Addresses
 
 ```
+Manager Status
+
+0x3ffa0CbFEf7E3a0112CCf7333193ac849248F375
+
+
 UNIBuyLowSellHigh USD
 
 0x10f02A8aEd8CBa0EF5D13030312dac1F41a39410
