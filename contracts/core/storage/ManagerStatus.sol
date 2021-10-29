@@ -12,7 +12,6 @@ contract ManagerStatus {
         string content
     );
 
-
     function updateStatus(address _fundAddress, string memory _content) public {
         // require valid content
         require(bytes(_content).length > 0, "Not valid content");
