@@ -180,8 +180,10 @@ contract('Strategy UNI/WETH', function([userOne, userTwo, userThree]) {
 
     it('should indicate buy when ETH price go DOWN to UNI ', async function() {
       await deployContracts(uniLD, ethLD)
+      
       console.log(
-        "rate rate 100 to 100", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1)
+        "rate before", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
+        "LD / RATE", Number(await strategy.getLDRatePrice())
       )
       // DUMP PRICE
       await token.approve(uniswapV2Router.address, toWei(String(tokenToSell)))
@@ -202,12 +204,18 @@ contract('Strategy UNI/WETH', function([userOne, userTwo, userThree]) {
          "LD amount", Number(fromWei(await strategy.getLDAmount())).toFixed(1)
        )
 
-       assert.equal(await strategy.computeTradeAction(), 2) // Should sell UNI
+       assert.equal(await strategy.computeTradeAction(), 1) // Should buy UNI
     })
 
 
     it('should indicate sell when ETH price go UP to UNI', async function() {
        await deployContracts(uniLD, ethLD)
+
+       console.log(
+         "rate before", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
+         "LD / RATE", Number(await strategy.getLDRatePrice())
+       )
+
        // PUMP PRICE
        await uniswapV2Router.swapExactETHForTokens(
          1,
@@ -223,134 +231,7 @@ contract('Strategy UNI/WETH', function([userOne, userTwo, userThree]) {
          "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
          "LD amount", Number(fromWei(await strategy.getLDAmount())).toFixed(1)
        )
-       assert.equal(await strategy.computeTradeAction(), 1) // Should buy UNI
-    })
-  })
-
-  describe('BUY and SELL indicators should works correct for pool 1000 to 1', async function() {
-    const uniLD = 1000
-    const ethLD = 1
-    const tokenToSell = 500
-    const ethToSell = 500
-
-    it('should indicate skipp when price not trigger', async function() {
-       await deployContracts(uniLD, ethLD)
-       assert.equal(await strategy.computeTradeAction(), 0)
-    })
-
-
-    it('should indicate buy when ETH price go DOWN to UNI 1', async function() {
-
-      await deployContracts(uniLD, ethLD)
-
-      console.log(
-        "LD / RATE prev ", Number(await strategy.previousLDRatePrice()),
-        "LD / RATE current ", Number(await strategy.getLDRatePrice()),
-        "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())),
-        "LD amount", Number(fromWei(await strategy.getLDAmount()))
-      )
-
-      // DUMP PRICE
-      await token.approve(uniswapV2Router.address, toWei(String(tokenToSell)))
-
-      await uniswapV2Router.swapExactTokensForTokens(
-         toWei(String(tokenToSell)),
-         1,
-         [token.address, weth.address],
-         userOne,
-         "1111111111111111111"
-         , { from: userOne }
-       )
-
-       console.log(
-         "LD / RATE before", Number(await strategy.previousLDRatePrice()),
-         "LD / RATE", Number(await strategy.getLDRatePrice()),
-         "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())),
-         "LD amount", Number(fromWei(await strategy.getLDAmount()))
-       )
-
        assert.equal(await strategy.computeTradeAction(), 2) // Should sell UNI
-    })
-
-
-    it('should indicate sell when ETH price go UP to UNI', async function() {
-       await deployContracts(1000, 1)
-       // PUMP PRICE
-       await uniswapV2Router.swapExactETHForTokens(
-         1,
-         [weth.address, token.address],
-         userOne,
-         "1111111111111111111"
-         , { from: userOne, value: toWei(String(ethToSell))}
-       )
-
-       console.log(
-         "LD / RATE before", Number(await strategy.previousLDRatePrice()),
-         "LD / RATE", Number(await strategy.getLDRatePrice()),
-         "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
-         "LD amount", Number(fromWei(await strategy.getLDAmount())).toFixed(1)
-       )
-       assert.equal(await strategy.computeTradeAction(), 1) // Should buy UNI
-    })
-  })
-
-
-  describe('BUY and SELL indicators should works correct for pool 1 to 1000', async function() {
-    const uniLD = 1
-    const ethLD = 1000
-    const tokenToSell = 500
-    const ethToSell = 500
-
-    it('should indicate skipp when price not trigger', async function() {
-       await deployContracts(uniLD, ethLD)
-       assert.equal(await strategy.computeTradeAction(), 0)
-    })
-
-
-    it('should indicate buy when ETH price go DOWN to UNI 2', async function() {
-      await deployContracts(uniLD, ethLD)
-
-      // DUMP PRICE
-      await token.approve(uniswapV2Router.address, toWei(String(tokenToSell)))
-
-      await uniswapV2Router.swapExactTokensForTokens(
-         toWei(String(tokenToSell)),
-         1,
-         [token.address, weth.address],
-         userOne,
-         "1111111111111111111"
-         , { from: userOne }
-       )
-
-       console.log(
-         "LD / RATE before", Number(await strategy.previousLDRatePrice()),
-         "LD / RATE", Number(await strategy.getLDRatePrice()),
-         "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
-         "LD amount", Number(fromWei(await strategy.getLDAmount())).toFixed(1)
-       )
-
-       assert.equal(await strategy.computeTradeAction(), 2) // Should sell UNI
-    })
-
-
-    it('should indicate sell when ETH price go UP to UNI', async function() {
-       await deployContracts(uniLD, ethLD)
-       // PUMP PRICE
-       await uniswapV2Router.swapExactETHForTokens(
-         1,
-         [weth.address, token.address],
-         userOne,
-         "1111111111111111111"
-         , { from: userOne, value: toWei(String(ethToSell))}
-       )
-
-       console.log(
-         "LD / RATE before", Number(await strategy.previousLDRatePrice()),
-         "LD / RATE", Number(await strategy.getLDRatePrice()),
-         "rate ", Number(fromWei(await strategy.getUNIPriceInUNDERLYING())).toFixed(1),
-         "LD amount", Number(fromWei(await strategy.getLDAmount())).toFixed(1)
-       )
-       assert.equal(await strategy.computeTradeAction(), 1) // Should buy UNI
     })
   })
   //END

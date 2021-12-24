@@ -74,7 +74,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
       previousLDRatePrice = getLDRatePrice();
     }
 
-    // Helper for check price for LD / 1 UNI in UNDERLYING
+    // Helper for check price for 1 UNI in UNDERLYING / LD * 2
     function getLDRatePrice()
       public
       view
@@ -82,7 +82,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     {
       uint256 oneUNIinUnderlying = getUNIPriceInUNDERLYING();
       uint256 LD = getLDAmount();
-      return oneUNIinUnderlying.mul(100000000000000000).div(LD.mul(2));
+      return oneUNIinUnderlying.mul(1e18).div(LD.mul(2));
       // return LD.mul(2).div(oneUNIinUnderlying);
     }
 
@@ -148,29 +148,29 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     function computeTradeAction() public view returns(uint){
        uint256 currentLDRatePrice = getLDRatePrice();
 
-       // Buy if current price >= trigger % to buy
-       // This means UNI go UP
-       if(currentLDRatePrice > previousLDRatePrice){
+       // BUY if previos rate > trigger % of current
+       // This means UNI go DOWN
+       if(previousLDRatePrice > currentLDRatePrice){
           uint256 res = computeTrigger(
-            currentLDRatePrice,
             previousLDRatePrice,
+            currentLDRatePrice,
             triggerPercent
           )
-          ? 2 // SELL UNI
+          ? 1 // BUY UNI
           : 0;
 
           return res;
        }
 
-       // Sell if current price =< trigger % to sell
-       // This means UNI go DOWN
-       else if(currentLDRatePrice < previousLDRatePrice){
+       // SELL if previos rate < trigger % of current
+       // This means UNI go UP
+       else if(previousLDRatePrice < currentLDRatePrice){
          uint256 res = computeTrigger(
-           previousLDRatePrice,
            currentLDRatePrice,
+           previousLDRatePrice,
            triggerPercent
          )
-         ? 1 // BUY UNI
+         ? 2 // SELL UNI
          : 0;
 
          return res;
