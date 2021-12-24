@@ -31,12 +31,15 @@ interface IERC20 {
   function balanceOf(address) external view returns(uint256);
 }
 
-contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
+contract OLD_UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     using SafeMath for uint256;
 
     uint256 public previousLDRatePrice;
     address public poolAddress;
-    uint256 public triggerPercent = 1;
+    uint256 public splitPercentToSell = 10;
+    uint256 public splitPercentToBuy = 10;
+    uint256 public triggerPercentToSell = 10;
+    uint256 public triggerPercentToBuy = 10;
 
     IRouter public router;
     address[] public path;
@@ -82,8 +85,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     {
       uint256 oneUNIinUnderlying = getUNIPriceInUNDERLYING();
       uint256 LD = getLDAmount();
-      return oneUNIinUnderlying.mul(100000000000000000).div(LD.mul(2));
-      // return LD.mul(2).div(oneUNIinUnderlying);
+      return LD.div(oneUNIinUnderlying);
     }
 
     // Helper for check price for 1 UNI in UNDERLYING
@@ -154,7 +156,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
           uint256 res = computeTrigger(
             currentLDRatePrice,
             previousLDRatePrice,
-            triggerPercent
+            triggerPercentToBuy
           )
           ? 2 // SELL UNI
           : 0;
@@ -168,7 +170,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
          uint256 res = computeTrigger(
            previousLDRatePrice,
            currentLDRatePrice,
-           triggerPercent
+           triggerPercentToSell
          )
          ? 1 // BUY UNI
          : 0;
@@ -198,13 +200,13 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     // Calculate how much % of UNDERLYING send from fund balance for buy UNI
     function underlyingAmountToSell() public view returns(uint256){
       uint256 totatlETH = fund.getFundTokenHolding(UNDERLYING_ADDRESS);
-      return totatlETH.div(100).mul(triggerPercent);
+      return totatlETH.div(100).mul(splitPercentToBuy);
     }
 
     // Calculate how much % of UNI send from fund balance for buy UNDERLYING
     function uniAmountToSell() public view returns(uint256){
       uint256 totalUNI = fund.getFundTokenHolding(UNI_TOKEN);
-      return totalUNI.div(100).mul(triggerPercent);
+      return totalUNI.div(100).mul(splitPercentToSell);
     }
 
     // Helper for trade
@@ -225,8 +227,23 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     }
 
     // Only owner setters
-    function setTriggerPercent(uint256 _triggerPercent) external onlyOwner{
-      require(triggerPercent <= 100, "Wrong %");
-      triggerPercent = _triggerPercent;
+    function setSplitPercentToSell(uint256 _splitPercentToSell) external onlyOwner{
+      require(splitPercentToSell <= 100, "Wrong %");
+      splitPercentToSell = _splitPercentToSell;
+    }
+
+    function setSplitPercentToBuy(uint256 _splitPercentToBuy) external onlyOwner{
+      require(splitPercentToBuy <= 100, "Wrong %");
+      splitPercentToBuy = _splitPercentToBuy;
+    }
+
+    function setTriggerPercentToSell(uint256 _triggerPercentToSell) external onlyOwner{
+      require(triggerPercentToSell <= 100, "Wrong %");
+      triggerPercentToSell = _triggerPercentToSell;
+    }
+
+    function setTriggerPercentToBuy(uint256 _triggerPercentToBuy) external onlyOwner{
+      require(triggerPercentToBuy <= 100, "Wrong %");
+      triggerPercentToBuy = _triggerPercentToBuy;
     }
 }
