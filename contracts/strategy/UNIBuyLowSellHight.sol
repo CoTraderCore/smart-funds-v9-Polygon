@@ -45,6 +45,8 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     address public UNDERLYING_ADDRESS;
     address public LD_TOKEN;
 
+    uint256 public dexType = 2;
+
     enum TradeType { Skip, BuyUNI, SellUNI }
 
 
@@ -83,7 +85,6 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
       uint256 oneUNIinUnderlying = getUNIPriceInUNDERLYING();
       uint256 LD = getLDAmount();
       return oneUNIinUnderlying.mul(1e18).div(LD.mul(2));
-      // return LD.mul(2).div(oneUNIinUnderlying);
     }
 
     // Helper for check price for 1 UNI in UNDERLYING
@@ -216,7 +217,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
         _fromToken,
         _amount,
         _toToken,
-        4,
+        dexType,
         proof,
         positions,
         "0x",
@@ -228,5 +229,9 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     function setTriggerPercent(uint256 _triggerPercent) external onlyOwner{
       require(triggerPercent <= 100, "Wrong %");
       triggerPercent = _triggerPercent;
+    }
+
+    function setDexType(uint256 _dexType) external onlyOwner {
+      dexType = _dexType;
     }
 }
