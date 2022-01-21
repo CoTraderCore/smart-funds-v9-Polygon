@@ -45,7 +45,7 @@ contract UNIBuyLowSellHigh is KeeperCompatibleInterface, Ownable {
     address public UNDERLYING_ADDRESS;
     address public LD_TOKEN;
 
-    uint256 public dexType = 2;
+    uint256 public dexType = 4;
 
     enum TradeType { Skip, BuyUNI, SellUNI }
 
