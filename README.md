@@ -34,7 +34,12 @@ Don't forget set latest 1inch contract
 # Addresses
 
 ```
-Latest strategy with QUICK
+LATEST STRATEGY
+
+0x962240D73E91fA9029Ea7e3ffA100ac53d3CAEd9
+
+
+OLD strategy with QUICK
 
 0x8405C2C4214bA5d17230b558f6e2116C2f72C75c
 
@@ -43,7 +48,7 @@ QUICK
 0x831753DD7087CaC61aB5644b308642cc1c33Dc13
 
 
-QUICK / DAI pool address 
+QUICK / DAI pool address
 
 0x02E0e14D65175420fB12AcD325A7Be456bc22005
 
